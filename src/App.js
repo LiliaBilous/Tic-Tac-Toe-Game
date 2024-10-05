@@ -1,4 +1,4 @@
-export default function Square() {
-    return <button className="square">X</button>;
-  }
-  
+import Game from "./Game";
+export default function App() {
+  return (<Game />) ;
+}

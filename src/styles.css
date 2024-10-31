@@ -51,8 +51,19 @@ ul {
 body {
   font-family: 'Poppins';
   background-color: darkcyan;
-
   margin: 2rem auto;
+}
+#root {
+  
+}
+.game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+  height: 100vh;
 }
 .game-board {
 
@@ -74,16 +85,12 @@ body {
 }
 
 .status {
-  font-size: large;
+  font-size: 2em;
   margin-bottom: 10px;
 }
 
-.game {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.game-info ol{
+
+.game-info {
   display: flex;
   flex-direction: column;
   justify-content: center;

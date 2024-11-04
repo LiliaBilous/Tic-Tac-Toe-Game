@@ -89,7 +89,6 @@ body {
   margin-bottom: 10px;
 }
 
-
 .game-info {
   display: flex;
   flex-direction: column;
@@ -105,4 +104,20 @@ body {
   margin-left: 10px;
   padding: 0.25rem;
   background-color: rgb(5, 80, 112);
+  transition: all 0.3s ease-in-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.game-info li {
+  animation: fadeInUp 0.5s ease-in-out;
 }

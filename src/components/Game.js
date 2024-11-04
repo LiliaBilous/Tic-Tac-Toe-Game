@@ -1,5 +1,6 @@
 import Board from "./Board";
 import { useState } from "react";
+
 export default function Game() {
   const [history, setHistory] = useState([Array(9).fill(null)]);
   const [currentMove, setCurrentMove] = useState(0);
@@ -16,19 +17,6 @@ export default function Game() {
     setCurrentMove(nextMove);
   }
 
-  const moves = history.map((currentSquares, move) => {
-    let description;
-    if (move > 0) {
-      description = "Go to move #" + move;
-    } else {
-      description = "Go to game start";
-    }
-    return (
-        <li key={move}>
-            <button onClick={() => jumpTo(move)}>{description}</button>
-        </li>
-    );
-  });
   function calculateWinner(currentSquares) {
     const lines = [
       [0, 1, 2],
@@ -48,13 +36,33 @@ export default function Game() {
     }
     return null;
   }
+
   const winner = calculateWinner(currentSquares);
+  const isDraw = !winner && currentSquares.every(square => square !== null);
   let status;
+
   if (winner) {
     status = "Winner: " + winner;
+  } else if (isDraw) {
+    status = "Draw!";
   } else {
     status = "Next player: " + (xIsNext ? "X" : "O");
   }
+
+  const moves = history.map((currentSquares, move) => {
+    let description;
+    if (move > 0) {
+      description = "Go to move #" + move;
+    } else {
+      description = "Go to game start";
+    }
+    return (
+        <li key={move}>
+            <button onClick={() => jumpTo(move)}>{description}</button>
+        </li>
+    );
+  });
+
   return (
     <div className="game">
     <div className="status">{status}</div>
